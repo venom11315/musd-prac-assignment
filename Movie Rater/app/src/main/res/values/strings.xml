@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MovieRater</string>
+    <string name="Name">Name</string>
+    <string name="Desc">Description</string>
+</resources>
