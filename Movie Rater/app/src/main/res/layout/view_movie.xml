@@ -1,57 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="match_parent" android:id="@+id/relativeLayout"
-                                             tools:layout_editor_absoluteY="81dp">
-
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/relativeLayout"
+>
+    <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@mipmap/icon"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/icon"/>
     <TextView
             android:text="Title:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/title"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:layout_below="@id/icon"
+    />
     <TextView
             android:text="TextView"
             android:textSize="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/titleText"
-            app:layout_constraintTop_toBottomOf="@id/title"/>
+            android:layout_below="@id/title"
+    />
     <TextView
             android:text="Overview:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView12"
-            app:layout_constraintTop_toBottomOf="@id/titleText"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:layout_below="@id/titleText"
+    />
     <TextView
             android:text="TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            app:layout_constraintTop_toBottomOf="@id/textView12"
-            android:id="@+id/OverviewText"/>
+            android:id="@+id/OverviewText"
+            android:layout_below="@id/textView12"/>
     <TextView
             android:text="Language:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/OverviewText"
-            android:id="@+id/textView14"/>
+            android:id="@+id/textView14"
+            android:layout_below="@id/OverviewText"/>
     <TextView
             android:text="TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            app:layout_constraintTop_toBottomOf="@id/textView14"
-            android:id="@+id/langText"/>
+            android:id="@+id/langText"
+            android:layout_below="@id/textView14"/>
     <TextView
             android:text="Release Date:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/langText"
-            android:id="@+id/textView16"/>
+            android:id="@+id/textView16"
+            android:layout_below="@id/langText"/>
     <TextView
             android:text="Date"
             android:textSize="20dp"
@@ -59,18 +66,18 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:id="@+id/dateText"
-            app:layout_constraintTop_toBottomOf="@id/textView16"/>
+            android:layout_below="@id/textView16"/>
     <TextView
             android:text="Suitable for children below 13:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/dateText"
-            android:id="@+id/suit"/>
+            android:id="@+id/suit"
+            android:layout_below="@id/dateText"/>
     <TextView
             android:text="TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            app:layout_constraintTop_toBottomOf="@id/suit"
-            android:id="@+id/suitable"/>
-</android.support.constraint.ConstraintLayout>
+            android:id="@+id/suitable"
+            android:layout_below="@id/suit"/>
+</RelativeLayout>
