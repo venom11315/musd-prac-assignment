@@ -67,7 +67,7 @@
                 android:text="Tamil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/indian"/>
+                android:id="@+id/tamil"/>
     </RadioGroup>
     <TextView
             android:text="Release Date"
@@ -111,6 +111,13 @@
                 android:onClick="addMovie"
                 android:text="ADD MOVIE"
                 android:id="@+id/movie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <Button
+                android:onClick="movieView"
+                android:layout_below="@id/movie"
+                android:id="@+id/viewMovie"
+                android:text="VIEW MOVIE"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 </RelativeLayout>
