@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MovieRater</string>
+    <string name="Name">Name</string>
+    <string name="Desc">Description</string>
+    <string name="addMovie">You have not added a movie \n Long Press me to add a movie</string>
+    <string name="forReview">No Reviews yet. \nLong press here to add your review.</string>
+</resources>
