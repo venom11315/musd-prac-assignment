@@ -96,11 +96,6 @@ class MovieRater : AppCompatActivity() {
                 Toast.makeText(this, total, Toast.LENGTH_SHORT).show()
                 movEntity = MovieEntity(title, overview, release, button.text.toString(), suitMr, "", "")
                 var viewIntent = Intent(applicationContext, ViewMovie::class.java)
-                viewIntent.putExtra("title", title)
-                viewIntent.putExtra("overview", overview)
-                viewIntent.putExtra("rel", release)
-                viewIntent.putExtra("lang", button.text)
-                viewIntent.putExtra("suit", suitMr+"("+checkVioLang+")")
                 startActivity(viewIntent)
             }
         }

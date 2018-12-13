@@ -36,9 +36,6 @@ class RateMovie : AppCompatActivity(){
             movEntity.comment=shareView.text.toString()
             movEntity.rate=rate.toString()
             val viewIntent = Intent(this, ViewMovie::class.java)
-            viewIntent.putExtra("rating", rate.toString())
-            viewIntent.putExtra("comment", shareView.text.toString())
-            viewIntent.putExtra("activity", "RateMovie")
             startActivity(viewIntent)
         }
         return super.onOptionsItemSelected(item)
