@@ -1,14 +1,20 @@
 package com.nyp.sit.dit.it2107.movierater
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.content.Intent
+import android.graphics.Movie
 import android.media.Image
 import android.view.*
 import android.widget.*
 import kotlinx.android.synthetic.main.to_add_movie.*
 import java.util.zip.Inflater
 import android.widget.AdapterView.AdapterContextMenuInfo
+import com.nyp.sit.dit.it2107.movierater.R.id.icon
+import com.nyp.sit.dit.it2107.movierater.R.id.listView1
+import kotlinx.android.synthetic.main.view_movie.*
 
 
 class AddMovie : AppCompatActivity() {
@@ -22,6 +28,15 @@ class AddMovie : AppCompatActivity() {
         }
         val adapt = ArrayAdapter(this, android.R.layout.simple_list_item_1, movieTitleList)
         listView1.adapter = adapt
+        listView1.setOnItemClickListener{parent, view, position, id ->
+            val SI = movieList.get(position)
+            movEntity = MovieEntity(SI.title, SI.overview, SI.release, SI.choice, SI.suit, SI.comment, SI.rate)
+            val viewIntent = Intent(applicationContext, ViewMovie::class.java)
+            viewIntent.putExtra("mainact", "main")
+            viewIntent.putExtra("itemPos", position.toString())
+            startActivity(viewIntent)
+        }
+
         registerForContextMenu(listView1)
     }
 

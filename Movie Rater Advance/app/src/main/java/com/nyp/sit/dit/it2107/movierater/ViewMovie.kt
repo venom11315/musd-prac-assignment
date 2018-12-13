@@ -42,7 +42,11 @@ class ViewMovie : AppCompatActivity(){
 
     override fun onContextItemSelected(item: MenuItem?): Boolean {
         if(item?.itemId == 1001){
-            var viewIntent = Intent(this, RateMovie::class.java)
+            val viewIntent = Intent(this, RateMovie::class.java)
+            if(intent.getStringExtra("mainact") == "main") {
+                viewIntent.putExtra("mainact", intent.getStringExtra("mainact"))
+                viewIntent.putExtra("itemPos", intent.getStringExtra("itemPos"))
+            }
             startActivity(viewIntent)
         }
         return super.onContextItemSelected(item)

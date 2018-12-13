@@ -125,7 +125,6 @@ class MovieRater : AppCompatActivity() {
                     valid = false
                 }
                 if (valid) {
-                    //"Reason = " should not appear when it's suitable for all ages
                     val total: String = "Title= " + title + "\n" + "Overview= " + overview + "\n" + "Release Date= " + release + "\n" + "Language = " + button.text + "\n" + "Suitable for all ages = " + aud.toString() + "\n" + "Reason = " + "\n" + check
                     Toast.makeText(this, total, Toast.LENGTH_SHORT).show()
 
@@ -137,6 +136,10 @@ class MovieRater : AppCompatActivity() {
             }
         }
         if(intent.getStringExtra("prevAct")=="toEditMov"){
+            if(item?.itemId == R.id.cancel){
+                val viewIntent = Intent(applicationContext, AddMovie::class.java)
+                startActivity(viewIntent)
+            }
             if(item?.itemId == R.id.saveEdit){
                 var title: String = name.text.toString()
                 var overview: String = desc.text.toString()

@@ -32,18 +32,24 @@ class RateMovie : AppCompatActivity(){
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 
+
         if(item?.itemId == android.R.id.home){
             super.onBackPressed()
             return true
         }
 
         if(item?.itemId == R.id.submit){
+            if(intent.getStringExtra("mainact") == "main") {
+                val theIndex:Int = intent.getStringExtra("itemPos").toInt()
+                for(i in movieList){
+                    val selectedItem = movieList.get(theIndex)
+                    selectedItem.rate = rate.toString()
+                    selectedItem.comment = shareView.text.toString()
+                }
+            }
             movEntity.comment=shareView.text.toString()
             movEntity.rate=rate.toString()
             val viewIntent = Intent(this, ViewMovie::class.java)
-            viewIntent.putExtra("rating", rate.toString())
-            viewIntent.putExtra("comment", shareView.text.toString())
-            viewIntent.putExtra("activity", "RateMovie")
             startActivity(viewIntent)
         }
         return super.onOptionsItemSelected(item)
