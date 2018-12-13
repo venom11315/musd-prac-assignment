@@ -1,5 +1,6 @@
 package com.nyp.sit.dit.it2107.movierater
 import com.nyp.sit.dit.it2107.movierater.R.id.name
+import java.util.*
 
 class MovieEntity(title:String, overview:String, release:String, choice:String, suit:String, comment:String, rate:String){
     var title:String
@@ -22,3 +23,4 @@ class MovieEntity(title:String, overview:String, release:String, choice:String, 
 }
 
 var movEntity = MovieEntity("", "", "", "", "", "", "")
+var movieList = mutableListOf<MovieEntity>()

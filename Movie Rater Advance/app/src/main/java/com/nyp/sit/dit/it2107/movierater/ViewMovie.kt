@@ -17,6 +17,7 @@ class ViewMovie : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.view_movie)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         titleText.text = movEntity.title
         OverviewText.text = movEntity.overview

@@ -2,6 +2,7 @@ package com.nyp.sit.dit.it2107.movierater
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.NavUtils
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
@@ -14,6 +15,8 @@ class RateMovie : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.rate_movie)
+        //supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         //get rating changed value method must be placed in onCreate function
         ratingBar.onRatingBarChangeListener = object: RatingBar.OnRatingBarChangeListener{
             override fun onRatingChanged(ratingBar: RatingBar?, rating: Float, fromUser: Boolean) {
@@ -28,10 +31,12 @@ class RateMovie : AppCompatActivity(){
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
         if(item?.itemId == android.R.id.home){
             super.onBackPressed()
             return true
         }
+
         if(item?.itemId == R.id.submit){
             movEntity.comment=shareView.text.toString()
             movEntity.rate=rate.toString()

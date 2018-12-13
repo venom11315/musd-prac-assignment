@@ -1,0 +1,70 @@
+package com.nyp.sit.dit.it2107.movierater
+
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.content.Intent
+import android.media.Image
+import android.view.*
+import android.widget.*
+import kotlinx.android.synthetic.main.to_add_movie.*
+import java.util.zip.Inflater
+import android.widget.AdapterView.AdapterContextMenuInfo
+
+
+class AddMovie : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.to_add_movie)
+        val movieTitleList = mutableListOf<String>()
+        for(titles in movieList){
+            movieTitleList.add(titles.title)
+        }
+        val adapt = ArrayAdapter(this, android.R.layout.simple_list_item_1, movieTitleList)
+        listView1.adapter = adapt
+        registerForContextMenu(listView1)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.start_rate_movie, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if(item?.itemId == R.id.addMov){
+            val viewIntent = Intent(this, MovieRater::class.java)
+            viewIntent.putExtra("prevAct", "toAddMov")
+            startActivity(viewIntent)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    var itemMenuIndex = 0
+    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+        if(v?.id == R.id.listView1){
+            //contains position of the option that is selected
+            val acmi = menuInfo as AdapterContextMenuInfo
+            itemMenuIndex = acmi.position
+            var obj = listView1.getItemAtPosition(itemMenuIndex)
+            menu?.add(1, 1001, 1, "Edit")
+        }
+    }
+
+    override fun onContextItemSelected(item: MenuItem?): Boolean {
+        if(item?.itemId == 1001){
+            var indexPos = ""
+            for(i in movieList){
+                if(movieList.indexOf(i).toString() == itemMenuIndex.toString()){
+                    indexPos = itemMenuIndex.toString()
+                    movEntity = MovieEntity(i.title, i.overview, i.release, i.choice, i.suit, i.comment, i.rate)
+                }
+            }
+            val viewIntent = Intent(applicationContext, MovieRater::class.java)
+            viewIntent.putExtra("prevAct", "toEditMov")
+            viewIntent.putExtra("indexPos", indexPos)
+            startActivity(viewIntent)
+        }
+        return super.onContextItemSelected(item)
+    }
+}

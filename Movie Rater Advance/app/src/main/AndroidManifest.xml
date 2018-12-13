@@ -34,8 +34,8 @@
                 android:name=".MovieRater"
                 android:parentActivityName=".AddMovie">
             <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".AddMovie"/>
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".AddMovie"/>
         </activity>
     </application>
 

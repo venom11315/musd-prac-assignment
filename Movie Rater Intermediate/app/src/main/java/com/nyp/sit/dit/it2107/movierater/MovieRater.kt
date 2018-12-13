@@ -7,9 +7,9 @@ import android.provider.MediaStore
 import android.renderscript.Sampler
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View;
+import android.view.View
 import android.widget.RadioButton
-import android.widget.Toast;
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_movie_rater.*
 import android.widget.RadioGroup
 import com.nyp.sit.dit.it2107.movierater.R.layout.view_movie
@@ -29,6 +29,15 @@ class MovieRater : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if(item?.itemId == R.id.clear){
+            name.setText("")
+            desc.setText("")
+            langChoice.check(-1)
+            relDate.setText("")
+            audience.isChecked = false
+            violence.isChecked = false
+            lanUsed.isChecked = false
+        }
         if(item?.itemId == R.id.addM){
             var title:String = name.text.toString()
             var overview:String = desc.text.toString()
@@ -45,11 +54,11 @@ class MovieRater : AppCompatActivity() {
             var suitMr:String
 
             if(choice < 0){
-                tamil.setError("Select a language")
+                tamil.error = "Select a language"
                 valid = false
             }
             if(audience.isChecked){
-                aud = true;
+                aud = true
                 if(violence.isChecked){
                     check = violence.text.toString()
                     checkVioLang = violence.text.toString()
@@ -62,30 +71,30 @@ class MovieRater : AppCompatActivity() {
                     checkVioLang = lanUsed.text.toString()
                 }
                 else{
-                    audience.setError("Please select violence or language used")
+                    audience.error = "Please select violence or language used"
                     valid = false
                 }
                 suitMr = "No"
             }else{
-                aud = false;
+                aud = false
                 suitMr = "Yes"
             }
             if(name.text.toString() == ""){
-                name.setError("Field empty")
+                name.error = "Field empty"
                 valid = false
             }
             if(desc.text.toString() == ""){
-                desc.setError("Field empty")
+                desc.error = "Field empty"
                 valid = false
             }
             if(relDate.text.toString() == ""){
-                relDate.setError("Field empty")
+                relDate.error = "Field empty"
                 valid = false
             }
             if(valid == true) {
                 var total: String = "Title= " + title + "\n" + "Overview= " + overview + "\n" + "Release Date= " + release + "\n" + "Language = " + button.text + "\n" + "Suitable for all ages = " + aud.toString() + "\n" + "Reason = " + "\n" + check
                 Toast.makeText(this, total, Toast.LENGTH_SHORT).show()
-                var movEntity = MovieEntity(title, overview, release, button.text.toString(), suitMr)
+                movEntity = MovieEntity(title, overview, release, button.text.toString(), suitMr, "", "")
                 var viewIntent = Intent(applicationContext, ViewMovie::class.java)
                 viewIntent.putExtra("title", title)
                 viewIntent.putExtra("overview", overview)
@@ -101,11 +110,11 @@ class MovieRater : AppCompatActivity() {
     //checkbox onclick event
     fun suitable(v:View?) {
         if (audience.isChecked) {
-            violence.visibility = View.VISIBLE;
-            lanUsed.visibility = View.VISIBLE;
+            violence.visibility = View.VISIBLE
+            lanUsed.visibility = View.VISIBLE
         } else {
-            violence.visibility = View.INVISIBLE;
-            lanUsed.visibility = View.INVISIBLE;
+            violence.visibility = View.INVISIBLE
+            lanUsed.visibility = View.INVISIBLE
         }
     }
 
