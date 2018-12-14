@@ -26,8 +26,8 @@ class AddMovie : AppCompatActivity() {
         for(titles in movieList){
             movieTitleList.add(titles.title)
         }
-        val adapt = ArrayAdapter(this, android.R.layout.simple_list_item_1, movieTitleList)
-        listView1.adapter = adapt
+        //val adapt = ArrayAdapter(this, android.R.layout.simple_list_item_1, movieTitleList)
+        listView1.adapter = CustomAdaptor(this, movieTitleList)
         listView1.setOnItemClickListener{parent, view, position, id ->
             val SI = movieList.get(position)
             movEntity = MovieEntity(SI.title, SI.overview, SI.release, SI.choice, SI.suit, SI.comment, SI.rate)
@@ -38,6 +38,31 @@ class AddMovie : AppCompatActivity() {
         }
 
         registerForContextMenu(listView1)
+    }
+
+    class CustomAdaptor(private val context:Activity, private val myList: MutableList<String>):BaseAdapter(){
+        override fun getItem(position: Int): Any {
+            return myList[position]
+        }
+
+        override fun getItemId(position: Int): Long {
+            return position.toLong()
+        }
+
+        override fun getCount(): Int {
+            return myList.size
+        }
+
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+            val inflater = context.layoutInflater
+            val rowView = inflater.inflate(R.layout.list_view, null)
+            val list_imageView = rowView.findViewById<ImageView>(R.id.listIcon)
+            val list_textView = rowView.findViewById<TextView>(R.id.listText)
+            list_imageView.setImageResource(R.mipmap.icon)
+            list_textView.setText(myList[position])
+            return rowView
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
