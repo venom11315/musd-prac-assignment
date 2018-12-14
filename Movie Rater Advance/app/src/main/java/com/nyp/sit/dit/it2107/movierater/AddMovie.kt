@@ -12,8 +12,7 @@ import android.widget.*
 import kotlinx.android.synthetic.main.to_add_movie.*
 import java.util.zip.Inflater
 import android.widget.AdapterView.AdapterContextMenuInfo
-import com.nyp.sit.dit.it2107.movierater.R.id.icon
-import com.nyp.sit.dit.it2107.movierater.R.id.listView1
+import com.nyp.sit.dit.it2107.movierater.R.id.*
 import kotlinx.android.synthetic.main.view_movie.*
 
 

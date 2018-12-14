@@ -62,6 +62,7 @@ class MovieRater : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        //link from add movie
         if(intent.getStringExtra("prevAct")=="toAddMov") {
             if(item?.itemId == R.id.clear){
                 name.setText("")
@@ -125,7 +126,11 @@ class MovieRater : AppCompatActivity() {
                     valid = false
                 }
                 if (valid) {
-                    val total: String = "Title= " + title + "\n" + "Overview= " + overview + "\n" + "Release Date= " + release + "\n" + "Language = " + button.text + "\n" + "Suitable for all ages = " + aud.toString() + "\n" + "Reason = " + "\n" + check
+                    var total: String = ""
+                    if(check != "")
+                        total = "Title= " + title + "\n" + "Overview= " + overview + "\n" + "Release Date= " + release + "\n" + "Language = " + button.text + "\n" + "Suitable for all ages = " + aud.toString() + "\n" + "Reason = " + "\n" + check
+                    else
+                        total = "Title= " + title + "\n" + "Overview= " + overview + "\n" + "Release Date= " + release + "\n" + "Language = " + button.text + "\n" + "Suitable for all ages = " + aud.toString()
                     Toast.makeText(this, total, Toast.LENGTH_SHORT).show()
 
                     movEntity = MovieEntity(title, overview, release, button.text.toString(), suitMr + checkVioLang, "", "")
@@ -135,6 +140,7 @@ class MovieRater : AppCompatActivity() {
                 }
             }
         }
+        //link for edit movie
         if(intent.getStringExtra("prevAct")=="toEditMov"){
             if(item?.itemId == R.id.cancel){
                 val viewIntent = Intent(applicationContext, AddMovie::class.java)
